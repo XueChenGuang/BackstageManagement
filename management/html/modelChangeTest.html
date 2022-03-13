@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:display="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>backstageManagement</title>
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="stylesheet" href="/BackstageManagement/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="/BackstageManagement/dist/css/adminlte.min.css?v=3.2.0">
+  <!--  <script nonce="578a0d8a-8b0c-42a8-a23c-8b6e15a884fa">(function(w,d){!function(a,e,t,r,z){a.zarazData=a.zarazData||{},a.zarazData.executed=[],a.zarazData.tracks=[],a.zaraz={deferred:[]};var s=e.getElementsByTagName("title")[0];s&&(a.zarazData.t=e.getElementsByTagName("title")[0].text),a.zarazData.w=a.screen.width,a.zarazData.h=a.screen.height,a.zarazData.j=a.innerHeight,a.zarazData.e=a.innerWidth,a.zarazData.l=a.location.href,a.zarazData.r=e.referrer,a.zarazData.k=a.screen.colorDepth,a.zarazData.n=e.characterSet,a.zarazData.o=(new Date).getTimezoneOffset(),a.dataLayer=a.dataLayer||[],a.zaraz.track=(e,t)=>{for(key in a.zarazData.tracks.push(e),t)a.zarazData["z_"+key]=t[key]},a.zaraz._preSet=[],a.zaraz.set=(e,t,r)=>{a.zarazData["z_"+e]=t,a.zaraz._preSet.push([e,t,r])},a.dataLayer.push({"zaraz.start":(new Date).getTime()}),a.addEventListener("DOMContentLoaded",(()=>{var t=e.getElementsByTagName(r)[0],z=e.createElement(r);z.defer=!0,z.src="/cdn-cgi/zaraz/s.js?z="+btoa(encodeURIComponent(JSON.stringify(a.zarazData))),t.parentNode.insertBefore(z,t)}))}(w,d,0,"script");})(window,document);</script>-->
+</head>
+
+
+<body>
+<div class="row">
+  <div id="original_table_1" class="col-2">
+    <ul id="container">
+      <li draggable="true">
+        <div class="bg-black color-palette">
+          <span style="text-align: center;display: block">table_1</span>
+        </div>
+      </li>
+      <li draggable="true">
+        <button id="xizang_button_1" type="button" class="btn btn-block btn-default btn-sm">
+          <span style="text-align: center">西藏</span>
+          <i class="fas fa-angle-left" style="float: right"></i>
+        </button>
+      </li>
+      <li draggable="true">
+        <button id="changJiangWei_button_1" type="button" class="btn btn-block btn-default btn-sm">
+          <span style="text-align: center">长江委</span>
+          <i class="fas fa-angle-left" style="float: right"></i>
+        </button>
+      </li>
+    </ul>
+  </div>
+  <div id="xizang_table_2" class="col-2" style="display: none">
+    <ul>
+      <li draggable="true">
+        <div class="bg-black color-palette">
+          <span style="text-align: center;display: block">table_2</span>
+        </div>
+      </li>
+      <li draggable="true">
+        <button id="xizang_button_2" type="button" class="btn btn-block btn-default btn-sm">
+          <span style="text-align: center">西藏二级节点</span>
+          <i class="fas fa-angle-left" style="float: right"></i>
+        </button>
+      </li>
+    </ul>
+  </div>
+  <div id="changJiangWei_table_2" class="col-2" style="display: none">
+    <ul>
+      <li draggable="true">
+        <div class="bg-black color-palette">
+          <span style="text-align: center;display: block">table_2</span>
+        </div>
+      </li>
+      <li draggable="true">
+        <button id="changJiangWei_button_2" type="button" class="btn btn-block btn-default btn-sm">
+          <span style="text-align: center">长江委二级节点</span>
+          <i class="fas fa-angle-left" style="float: right"></i>
+        </button>
+      </li>
+    </ul>
+  </div>
+  <div id="xizang_table_3" class="col-2" style="display: none">
+    <ul>
+      <li draggable="true">
+        <div class="bg-black color-palette">
+          <span style="text-align: center;display: block">table_3</span>
+        </div>
+      </li>
+      <li draggable="true">
+        <button type="button" class="btn btn-block btn-default btn-sm">
+          <span style="text-align: center">尾节点</span>
+          <i class="fas fa-angle-left" style="float: right"></i>
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
+</body>
+
+
+<script src="/BackstageManagement/plugins/jquery/jquery.min.js"></script>
+<script src="/BackstageManagement/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/BackstageManagement/dist/js/adminlte.min.js?v=3.2.0"></script>
+<script src="../js/buttonClick.js"></script>
+<script src="../js/move.js"></script>
+</html>
