@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="stylesheet" href="/BackstageManagement/AdminLTE-3.2.0/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="/BackstageManagement/AdminLTE-3.2.0/dist/css/adminlte.min.css?v=3.2.0">
+  <!--  <script nonce="578a0d8a-8b0c-42a8-a23c-8b6e15a884fa">(function(w,d){!function(a,e,t,r,z){a.zarazData=a.zarazData||{},a.zarazData.executed=[],a.zarazData.tracks=[],a.zaraz={deferred:[]};var s=e.getElementsByTagName("title")[0];s&&(a.zarazData.t=e.getElementsByTagName("title")[0].text),a.zarazData.w=a.screen.width,a.zarazData.h=a.screen.height,a.zarazData.j=a.innerHeight,a.zarazData.e=a.innerWidth,a.zarazData.l=a.location.href,a.zarazData.r=e.referrer,a.zarazData.k=a.screen.colorDepth,a.zarazData.n=e.characterSet,a.zarazData.o=(new Date).getTimezoneOffset(),a.dataLayer=a.dataLayer||[],a.zaraz.track=(e,t)=>{for(key in a.zarazData.tracks.push(e),t)a.zarazData["z_"+key]=t[key]},a.zaraz._preSet=[],a.zaraz.set=(e,t,r)=>{a.zarazData["z_"+e]=t,a.zaraz._preSet.push([e,t,r])},a.dataLayer.push({"zaraz.start":(new Date).getTime()}),a.addEventListener("DOMContentLoaded",(()=>{var t=e.getElementsByTagName(r)[0],z=e.createElement(r);z.defer=!0,z.src="/cdn-cgi/zaraz/s.js?z="+btoa(encodeURIComponent(JSON.stringify(a.zarazData))),t.parentNode.insertBefore(z,t)}))}(w,d,0,"script");})(window,document);</script>-->
+
+</head>
+<body>
+<div class="row align-items-start">
+<div class="col-md-3" id="block0">
+  <p class="card-header" id="title0">一级部门</p>
+<ul id="container0" class="todo-list ui-sortable">
+</ul>
+</div>
+<div class="col-md-3" id="block1">
+  <p class="card-header" id="title1">二级部门</p>
+  <ul id="container1" class="todo-list ui-sortable" >
+  </ul>
+</div>
+<div class="col-md-3" id="block2">
+  <p class="card-header" id="title2">三级部门</p>
+  <ul id="container2" class="todo-list ui-sortable" >
+  </ul>
+</div>
+</div>
+</ul>
+</div>
+<!-- jQuery -->
+<script src="/BackstageManagement/AdminLTE-3.2.0/plugins/jquery/jquery.min.js"></script>
+<script src="/BackstageManagement/AdminLTE-3.2.0/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/BackstageManagement/AdminLTE-3.2.0/dist/js/adminlte.min.js?v=3.2.0"></script>
+
+<script src="../js/buttonClick.js"></script>
+<script src="../js/move.js"></script>
+<script>
+  //循环显示li
+  //最多不超过5层
+  //--------------------从数据库里查就不用这么麻烦了，演示一下
+  var arrs=new Array();
+  var arr1={
+    //循环名
+    data:['水利部','松辽水利委员会','西藏水利委员会'],
+    //节点属于第几个展开的项
+    code:0,
+    id:['1000','1006','1054']
+  };
+  var arr2={
+    //循环名
+    data:['财务处','办公室','河湖建设处'],
+    //节点属于第几个展开的项
+    code:1,
+    id:['caiwu','bangong','hehu']
+  };
+
+  var arr3={
+    //循环名
+    data:['综合科','预算管理科','收费管理科'],
+    //节点属于第几个展开的项
+    code:2,
+    id:['zonghe','yusuan','shoufei']
+  };
+  arrs.push(arr1);
+  arrs.push(arr2);
+  arrs.push(arr3);
+//-----------------------------------------
+  var str='';
+  for(var j=0;j<arrs.length;j++){
+    var str=new Array(arrs.length);
+    str[j]='';
+    arr=arrs[j]
+  for(var i=0;i<arr.data.length;i++){
+    str[j]+='  <li class="ele"id='+arr.id[i]+'_'+arr.code+' draggable="true">\n' +
+      '    <span class="text">'+arr.data[i]+'</span>\n' +
+      '    <div class="tools">\n' +
+      '      <button id="button_'+arr.code+'" type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-angle-left"></i>\n' +
+      '      </button>\n' +
+      '    </div>\n' +
+      '  </li>'
+  }
+    document.getElementById('container'+j).innerHTML=(str[j])
+  }
+
+//将除了第一列的元素都变为空
+  $.each($('div'),(index,element) => {
+    console.log(element)
+    if(element.id.substr(-1)!=0){
+      $(element).css('display', 'none')
+    }
+  })
+
+
+  //点击展开
+  $("button").click(
+    function(){
+      var currentButtonID = $(this).attr("id").substr(-1);
+      var nextTableID = Number(currentButtonID) + 1;
+      if ($(this).children('i').hasClass('fa-angle-left')) {
+        $(this).children('i').removeClass('fa-angle-left')
+        $(this).children('i').addClass('fa-angle-right')
+        $.each($("div"),function (index,element){
+          if(element.id.substr(-1)==nextTableID){
+            $(element).css('display', 'block')
+          }
+        });
+      } else {
+        $(this).children('i').removeClass('fa-angle-right')
+        $(this).children('i').addClass('fa-angle-left')
+        $.each($("div"),function (index,element){
+          if(element.id.substr(-1)>currentButtonID){
+            $(element).find('i').removeClass('fa-angle-right')
+            $(element).find('i').addClass('fa-angle-left')
+            $(element).css('display', 'none')
+          }
+        });
+      }
+    }
+  )
+</script>
+<!--有两个问题:-->
+<!--1.点击同级节点时，二级节点的替换
+    2.部门树怎么编码，01 99 00 00 00
+
+-->
+</body>
+</html>
